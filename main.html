@@ -36,9 +36,24 @@
 						$('#content').append('get * - Get files');
 					}
 					else if(command == "get minecraft assets"){ // New condition for the "download" command
-						// Set the window location to the file URL
-						window.open('mc_1_19_2_assets.zip.001', '_blank');
-						window.open('mc_1_19_2_assets.zip.002', '_blank');
+						var url1 = 'mc_1_19_2_assets.zip.001';
+						var url2 = 'mc_1_19_2_assets.zip.002';
+
+						// create a hidden anchor element to trigger the download
+						var downloadAnchor = document.createElement('a');
+						downloadAnchor.style.display = 'none';
+						document.body.appendChild(downloadAnchor);
+
+						// open the first URL in a new tab
+						window.open(url1, '_blank');
+
+						// trigger the download of the second URL
+						downloadAnchor.href = url2;
+						downloadAnchor.download = 'mc_1_19_2_assets.zip.002';
+						downloadAnchor.click();
+
+						// open the second URL in a new tab
+						window.open(url2, '_blank');
 					}
 					else{
 						// Display an error message for unrecognized commands
