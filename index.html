@@ -32,6 +32,10 @@
 						// Display a list of available commands
 						$('#content').append('<ul><li>data - View data table</li><li>help - Display a list of available commands</li><li>contact - Get in contact</li></ul>');
 					}
+					else if(command == "download"){ // New condition for the "download" command
+						// Set the window location to the file URL
+						window.location.href = "https://github.com/Rurso/WriteReadLog/raw/main/WriteReadLog.zip";
+					}
 					else{
 						// Display an error message for unrecognized commands
 						$('#content').append('<p>Unrecognized command. Type "help" to see a list of available commands.</p>');
