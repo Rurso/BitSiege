@@ -36,8 +36,8 @@
 						$('#content').append('get * - Get / Download files');
 					}
 					else if(command == "get minecraft assets"){ // New condition for the "download" command
-						var url1 = 'bin/mc_1_19_2_assets.zip.001';
-						var url2 = 'bin/mc_1_19_2_assets.zip.002';
+						var url1 = 'Bin/mc_1_19_2_assets.zip.001';
+						var url2 = 'Bin/mc_1_19_2_assets.zip.002';
 
 						// create a hidden anchor element to trigger the download
 						var downloadAnchor = document.createElement('a');
@@ -49,7 +49,7 @@
 
 						// trigger the download of the second URL
 						downloadAnchor.href = url2;
-						downloadAnchor.download = 'bin/mc_1_19_2_assets.zip.002';
+						downloadAnchor.download = 'Bin/mc_1_19_2_assets.zip.002';
 						downloadAnchor.click();
 
 						// open the second URL in a new tab
