@@ -33,15 +33,11 @@
 						$('#content').append('data - View data table<br>');
 						$('#content').append('help - Display a list of available commands<br>');
 						$('#content').append('contact - Get in contact<br>');
-						$('#content').append('download * - Download files ("download ?" for further help)<br>');
+						$('#content').append('get * - Get files');
 					}
-					else if(command == "get minecraft mods"){ // New condition for the "download" command
+					else if(command == "get minecraft assets"){ // New condition for the "download" command
 						// Set the window location to the file URL
-						window.location.href = "https://github.com/Rurso/WriteReadLog/raw/main/mc_1_19_2_mods.zip";
-					}
-					else if(command == "get minecraft util"){ // New condition for the "download" command
-						// Set the window location to the file URL
-						window.location.href = "https://github.com/Rurso/WriteReadLog/raw/main/mc_1_19_2_util.zip";
+						window.location.href = "mc_1_19_2_assets.zip";
 					}
 					else{
 						// Display an error message for unrecognized commands
