@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Computer Bootup</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#bootup').fadeIn(0500).delay(0500).fadeOut(0500, function(){
+				$('#terminal').fadeIn(1000);
+				$('#command').focus();
+			});
+			
+			$('#command').keypress(function(event){
+				if(event.keyCode == 13){
+					event.preventDefault();
+					var command = $('#command').val();
+					$('#command').val('');
+					$('#content').append('<p>> ' + command + '</p>');
+					
+					// Check for specific keyword
+					if(command == "data"){
+						// Open a new HTML page that displays a table with the data
+						window.location.href = "data.html";
+					}
+					else if(command == "contact"){
+						window.location.href = "contact.html";
+					}
+					// Check for "help" command
+					else if(command == "help"){
+						// Display a list of available commands
+						$('#content').append('<ul><li>data - View data table</li><li>help - Display a list of available commands</li><li>contact - Get in contact</li></ul>');
+					}
+					else if(command == "download"){ // New condition for the "download" command
+						// Set the window location to the file URL
+						window.location.href = "https://github.com/Rurso/WriteReadLog/raw/main/WriteReadLog.zip";
+					}
+					else{
+						// Display an error message for unrecognized commands
+						$('#content').append('<p>Unrecognized command. Type "help" to see a list of available commands.</p>');
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="bootup">
+		<p>Booting up...</p>
+	</div>
+	<div id="terminal" style="display:none;">
+		<div id="header">
+			<p>Terminal</p>
+			<button id="close">X</button>
+		</div>
+		<div id="content">
+			<p>Welcome to the terminal. Type a command to get started.</p>
+		</div>
+		<div id="input">
+			<p>></p>
+			<input type="text" id="command">
+		</div>
+	</div>
+</body>
+</html>
