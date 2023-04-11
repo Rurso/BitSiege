@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Starting SD-DOS...</title>
+	<link rel="stylesheet" href="style.css">
+	<meta http-equiv="refresh" content="35; url=https://example.com/">
+</head>
+<body>
+	<h1>Starting SD-DOS...</h1>
+	<pre id="output"></pre>
+	<script>
+		const lines = [
+			"This driver provided by TFGang Inc..",
+			"OTI-91X ATAPI CD-ROM device driver, Rev D91XV352",
+			"(C)Copyright TFGang Inc. 1987-1997",
+			"  Device Name        : MSCD0001",
+			"  Transfer Mode      : Programmed I/O",
+			"  Number of drives   : 1",
+			"",
+			"MSCDEX Version 2.23",
+			"Copyright (C) Microsoft Corp. 1986-1993. All rights reserved.",
+			"       Drive D: = Driver MSCD0001 unit 0",
+			"",
+			"CPUidle for DOS V2.10  [Build 0077]",
+			"Copyright (C) by Einstellung, 1998.",
+			"",
+			"DETECTING...",
+			"[Processor]:    Unknown Intel.",
+			"[Power/Man]:    APM V1.2 [Enabled].",
+			"[Op/System]:    SD-DOS V6.22 [Standard].",
+			"[32-bit mode]:  32-bit VCPI interface.",
+			"",
+			"Requesting Terminal...",
+			"Requesting Terminal...",
+			"Requesting Terminal...",
+			"Starting Terminal Version 1.0"
+		];
+		const output = document.getElementById("output");
+		const delay = 50; // x seconds delay between each line
+		let i = 0;
+
+		function writeLine() {
+			if (i < lines.length) {
+				output.innerHTML += lines[i] + "\n";
+				i++;
+				setTimeout(writeLine, delay);
+			} else {
+				setTimeout(function(){
+					window.location.href = "main.html";
+				}, 2000); //pause for 2 seconds
+			}
+		}
+
+		writeLine();
+	</script>
+</body>
+</html>

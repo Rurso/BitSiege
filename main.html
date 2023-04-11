@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Terminal</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#bootup').fadeIn(0500).delay(0500).fadeOut(0500, function(){
+				$('#terminal').fadeIn(1000);
+				$('#command').focus();
+			});
+			
+			$('#command').keypress(function(event){
+				if(event.keyCode == 13){
+					event.preventDefault();
+					var command = $('#command').val();
+					$('#command').val('');
+					$('#content').append('<p>> ' + command + '</p>');
+					
+					// Check for specific keyword
+					if(command == "data"){
+						// Open a new HTML page that displays a table with the data
+						window.location.href = "data.html";
+					}
+					else if(command == "contact"){
+						window.location.href = "contact.html";
+					}
+					// Check for "help" command
+					else if(command == "help"){
+						// Display a list of available commands
+						$('#content').append('data - View data table<br>');
+						$('#content').append('help - Display a list of available commands<br>');
+						$('#content').append('contact - Get in contact<br>');
+						$('#content').append('get * - Get / Download files');
+					}
+					else if(command == "get minecraft assets"){ // New condition for the "download" command
+						var url1 = 'bin/mc_1_19_2_assets.zip.001';
+						var url2 = 'bin/mc_1_19_2_assets.zip.002';
+
+						// create a hidden anchor element to trigger the download
+						var downloadAnchor = document.createElement('a');
+						downloadAnchor.style.display = 'none';
+						document.body.appendChild(downloadAnchor);
+
+						// open the first URL in a new tab
+						window.open(url1, '_blank');
+
+						// trigger the download of the second URL
+						downloadAnchor.href = url2;
+						downloadAnchor.download = 'bin/mc_1_19_2_assets.zip.002';
+						downloadAnchor.click();
+
+						// open the second URL in a new tab
+						window.open(url2, '_blank');
+					}
+					else if(command == "get software wrlog"){
+						window.location.href = "https://github.com/Rurso/WriteReadLog/archive/refs/heads/main.zip";
+					}
+					else{
+						// Display an error message for unrecognized commands
+						$('#content').append('<p>Unrecognized command. Type "help" to see a list of available commands.</p>');
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="bootup">
+		<p>Booting up...</p>
+	</div>
+	<div id="terminal" style="display:none;">
+		<div id="header">
+			<p>Terminal</p>
+			<button id="close">X</button>
+		</div>
+		<div id="content">
+			<p>Welcome to the terminal. Type a command or "help" for help.</p>
+		</div>
+		<div id="input">
+			<p>></p>
+			<input type="text" id="command">
+		</div>
+	</div>
+</body>
+</html>
