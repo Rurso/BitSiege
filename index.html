@@ -46,7 +46,9 @@
 				i++;
 				setTimeout(writeLine, delay);
 			} else {
-				window.location.href = "main.html";
+				setTimeout(function(){
+					window.location.href = "main.html";
+				}, 2000); //pause for 2 seconds
 			}
 		}
 
